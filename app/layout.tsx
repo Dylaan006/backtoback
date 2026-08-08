@@ -34,13 +34,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-black text-white">
-        <header className="pt-3 px-5 flex justify-end">
-          <DayCountdown />
-        </header>
-        <div className="flex-1 pb-16 flex flex-col">
-          {children}
+        <div className="w-full max-w-md mx-auto flex-1 flex flex-col">
+          <header className="pt-3 px-5 flex justify-end">
+            <DayCountdown />
+          </header>
+          <div className="flex-1 pb-16 flex flex-col">
+            {children}
+          </div>
+          <BottomNav />
         </div>
-        <BottomNav />
       </body>
     </html>
   );

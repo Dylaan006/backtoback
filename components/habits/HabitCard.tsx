@@ -67,7 +67,7 @@ export function HabitCard({
       {/* 7 Days Grid */}
       <div className="pt-2.5 border-t border-[#222]">
         <p className="text-[10px] text-gray-500 uppercase tracking-wider mb-2 font-semibold">Últimos 7 días</p>
-        <div className="grid grid-cols-7 gap-1.5 text-center">
+        <div className="flex justify-between items-center max-w-sm">
           {history7Days.map((day) => (
             <div key={day.dateStr} className="flex flex-col items-center space-y-1">
               <span className={`text-[10px] ${day.isToday ? 'text-emerald-400 font-bold' : 'text-gray-500'}`}>
@@ -75,7 +75,7 @@ export function HabitCard({
               </span>
               <div 
                 title={`${day.dateStr}: ${day.completed ? 'Completado' : 'No completado'}`}
-                className={`w-full aspect-square rounded-lg flex items-center justify-center transition-all ${
+                className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center transition-all ${
                   day.completed 
                     ? 'bg-emerald-500 text-black shadow-[0_0_8px_rgba(16,185,129,0.3)]' 
                     : day.isToday

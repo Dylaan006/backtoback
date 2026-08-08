@@ -19,8 +19,8 @@ export function BottomNav() {
   if (pathname === '/login') return null
 
   return (
-    <nav className="fixed bottom-0 w-full bg-[#111] border-t border-[#333] pb-[env(safe-area-inset-bottom)] z-50">
-      <div className="flex justify-around items-center h-16">
+    <nav className="fixed bottom-0 left-0 right-0 bg-[#111] border-t border-[#333] pb-[env(safe-area-inset-bottom)] z-50">
+      <div className="flex justify-around items-center h-16 max-w-md mx-auto">
         {navItems.map((item) => {
           const Icon = item.icon
           const isActive = pathname.startsWith(item.href)
