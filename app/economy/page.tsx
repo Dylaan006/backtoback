@@ -27,8 +27,8 @@ export default async function EconomyPage() {
   return (
     <main className="p-5 space-y-6">
       <header className="pt-2">
-        <h1 className="text-3xl font-bold tracking-tight">Economy</h1>
-        <p className="text-gray-400 mt-1">Manage your money effectively.</p>
+        <h1 className="text-3xl font-bold tracking-tight">Economía</h1>
+        <p className="text-gray-400 mt-1">Administra tu dinero eficazmente.</p>
       </header>
 
       <BalanceCard incomes={incomes} expenses={expenses + fixedTotal} />
@@ -38,7 +38,7 @@ export default async function EconomyPage() {
       <FixedExpenses expenses={fixedExpenses || []} total={fixedTotal} />
 
       <div className="space-y-3 pt-2">
-        <h2 className="text-xl font-bold mb-4">Recent Transactions</h2>
+        <h2 className="text-xl font-bold mb-4">Transacciones Recientes</h2>
         {transactions?.map(t => (
           <div key={t.id} className="flex justify-between items-center bg-[#111] p-4 rounded-xl border border-[#222]">
             <div>
@@ -61,7 +61,7 @@ export default async function EconomyPage() {
           </div>
         ))}
         {transactions?.length === 0 && (
-          <p className="text-center text-gray-500 py-8 bg-[#111] rounded-xl border border-[#222]">No transactions this month.</p>
+          <p className="text-center text-gray-500 py-8 bg-[#111] rounded-xl border border-[#222]">No tienes transacciones este mes.</p>
         )}
       </div>
     </main>

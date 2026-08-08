@@ -24,8 +24,8 @@ export default async function HabitsPage() {
   return (
     <main className="p-5 space-y-6">
       <header className="pt-2">
-        <h1 className="text-3xl font-bold tracking-tight">Habits</h1>
-        <p className="text-gray-400 mt-1">Build better routines.</p>
+        <h1 className="text-3xl font-bold tracking-tight">Hábitos</h1>
+        <p className="text-gray-400 mt-1">Crea mejores rutinas diarias.</p>
       </header>
 
       <CreateHabit />
@@ -55,7 +55,7 @@ export default async function HabitsPage() {
           )
         })}
         {habits?.length === 0 && (
-          <p className="text-center text-gray-500 py-8">No habits yet. Start tracking today!</p>
+          <p className="text-center text-gray-500 py-8">No tienes hábitos aún. ¡Comienza a registrar hoy!</p>
         )}
       </div>
     </main>

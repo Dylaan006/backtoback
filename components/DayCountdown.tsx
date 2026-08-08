@@ -39,7 +39,7 @@ export function DayCountdown() {
   return (
     <div className="flex items-center space-x-2 text-xs text-emerald-400 bg-[#111] border border-[#222] py-1.5 px-3 rounded-full font-mono shadow-sm">
       <Clock size={13} className="animate-pulse text-emerald-500" />
-      <span className="text-gray-400">Resets in:</span>
+      <span className="text-gray-400">Reinicio en:</span>
       <span className="font-semibold text-emerald-400">{timeLeft || '--h --m --s'}</span>
     </div>
   )

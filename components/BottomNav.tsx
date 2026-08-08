@@ -6,9 +6,9 @@ import { ListTodo, CalendarCheck, Wallet, Flame } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const navItems = [
-  { name: 'Tasks', href: '/tasks', icon: ListTodo },
-  { name: 'Habits', href: '/habits', icon: CalendarCheck },
-  { name: 'Economy', href: '/economy', icon: Wallet },
+  { name: 'Tareas', href: '/tasks', icon: ListTodo },
+  { name: 'Hábitos', href: '/habits', icon: CalendarCheck },
+  { name: 'Economía', href: '/economy', icon: Wallet },
   { name: 'Kcal', href: '/kcal', icon: Flame },
 ]
 

@@ -22,8 +22,8 @@ export function TaskItem({ task }: { task: any }) {
           <div className="flex items-center space-x-2 text-xs mt-1.5">
             <span className="text-gray-400 bg-[#222] px-2 py-0.5 rounded">{task.category}</span>
             <span className={`px-2 py-0.5 rounded font-medium ${
-              task.priority === 'High' ? 'text-rose-400 bg-rose-400/10' : 
-              task.priority === 'Medium' ? 'text-amber-400 bg-amber-400/10' : 
+              task.priority === 'Alta' ? 'text-rose-400 bg-rose-400/10' : 
+              task.priority === 'Media' ? 'text-amber-400 bg-amber-400/10' : 
               'text-blue-400 bg-blue-400/10'
             }`}>{task.priority}</span>
           </div>

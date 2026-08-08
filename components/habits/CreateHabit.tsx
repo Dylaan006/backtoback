@@ -17,7 +17,7 @@ export function CreateHabit() {
     >
       <input 
         name="title" 
-        placeholder="New habit (e.g. Read 20 mins)" 
+        placeholder="Nuevo hábito (ej. Leer 20 min, Entrenar)" 
         required 
         className="flex-1 bg-[#111] border border-[#333] focus:border-emerald-500 rounded-xl px-4 py-3 outline-none text-white transition-colors"
       />

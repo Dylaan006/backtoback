@@ -1,6 +1,6 @@
 -- Create Tables
 
--- 1. Tasks
+-- 1. Tasks (Tareas)
 CREATE TABLE public.tasks (
   id uuid default gen_random_uuid() primary key,
   user_id uuid references auth.users not null,
@@ -11,7 +11,7 @@ CREATE TABLE public.tasks (
   created_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
 
--- 2. Habits
+-- 2. Habits (Hábitos)
 CREATE TABLE public.habits (
   id uuid default gen_random_uuid() primary key,
   user_id uuid references auth.users not null,
@@ -19,7 +19,7 @@ CREATE TABLE public.habits (
   created_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
 
--- 3. Habit Logs (History)
+-- 3. Habit Logs (Registro de Hábitos)
 CREATE TABLE public.habit_logs (
   id uuid default gen_random_uuid() primary key,
   user_id uuid references auth.users not null,
@@ -29,7 +29,7 @@ CREATE TABLE public.habit_logs (
   UNIQUE(user_id, habit_id, completed_date)
 );
 
--- 4. Transactions (Economy)
+-- 4. Transactions (Transacciones Economía)
 CREATE TABLE public.transactions (
   id uuid default gen_random_uuid() primary key,
   user_id uuid references auth.users not null,
@@ -40,7 +40,7 @@ CREATE TABLE public.transactions (
   created_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
 
--- 5. Fixed Expenses (Economy)
+-- 5. Fixed Expenses (Gastos Fijos Economía)
 CREATE TABLE public.fixed_expenses (
   id uuid default gen_random_uuid() primary key,
   user_id uuid references auth.users not null,
@@ -49,7 +49,7 @@ CREATE TABLE public.fixed_expenses (
   created_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
 
--- 6. Daily Kcal
+-- 6. Daily Kcal (Meta y Consumido Diario)
 CREATE TABLE public.daily_kcal (
   id uuid default gen_random_uuid() primary key,
   user_id uuid references auth.users not null,
@@ -60,6 +60,16 @@ CREATE TABLE public.daily_kcal (
   UNIQUE(user_id, date)
 );
 
+-- 7. Food Logs (Detalle de Comidas del Día)
+CREATE TABLE public.food_logs (
+  id uuid default gen_random_uuid() primary key,
+  user_id uuid references auth.users not null,
+  name text not null,
+  calories integer not null,
+  date date not null,
+  created_at timestamp with time zone default timezone('utc'::text, now()) not null
+);
+
 -- Enable Row Level Security (RLS) on all tables
 ALTER TABLE public.tasks ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.habits ENABLE ROW LEVEL SECURITY;
@@ -67,6 +77,7 @@ ALTER TABLE public.habit_logs ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.transactions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.fixed_expenses ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.daily_kcal ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.food_logs ENABLE ROW LEVEL SECURITY;
 
 -- Create Policies (Only users can access their own data)
 
@@ -105,3 +116,9 @@ CREATE POLICY "Users can select their own daily_kcal" ON public.daily_kcal FOR S
 CREATE POLICY "Users can insert their own daily_kcal" ON public.daily_kcal FOR INSERT WITH CHECK (auth.uid() = user_id);
 CREATE POLICY "Users can update their own daily_kcal" ON public.daily_kcal FOR UPDATE USING (auth.uid() = user_id);
 CREATE POLICY "Users can delete their own daily_kcal" ON public.daily_kcal FOR DELETE USING (auth.uid() = user_id);
+
+-- Food Logs Policies
+CREATE POLICY "Users can select their own food_logs" ON public.food_logs FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users can insert their own food_logs" ON public.food_logs FOR INSERT WITH CHECK (auth.uid() = user_id);
+CREATE POLICY "Users can update their own food_logs" ON public.food_logs FOR UPDATE USING (auth.uid() = user_id);
+CREATE POLICY "Users can delete their own food_logs" ON public.food_logs FOR DELETE USING (auth.uid() = user_id);
